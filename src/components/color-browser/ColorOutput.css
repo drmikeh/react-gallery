@@ -1,0 +1,9 @@
+.color-output {
+  margin: auto;
+  width: 200px;
+  height: 200px;
+  border-radius: 15px;
+}
+.color-output p {
+  padding-top: 90px;
+}

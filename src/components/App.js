@@ -3,8 +3,11 @@ import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 
 import Navbar from './Navbar';
 import Clock from './Clock';
+import CounterApp from './counter/CounterApp';
 import Greeter from './Greeter';
 import TodoApp from './todos/TodoApp';
+import ColorBrowserApp from './color-browser/ColorBrowserApp';
+
 import './App.css';
 
 const HomePage = (props) => ( <article> <h1>Home</h1> </article> );
@@ -31,9 +34,11 @@ class App extends Component {
 
           <Switch>
             <Route exact path="/" component={HomePage} />
-            <Route path="/todos" component={TodoApp} />
-            <Route path="/clock" component={Clock} />
             <Route path="/greetings" component={GreeterPage} />
+            <Route path="/counter" component={CounterApp} />
+            <Route path="/clock" component={Clock} />
+            <Route path="/todos" component={TodoApp} />
+            <Route path="/color-browser" component={ColorBrowserApp} />
             <Route path="/about" component={AboutPage} />
           </Switch>
         </div>

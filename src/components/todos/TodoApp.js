@@ -45,8 +45,8 @@ class TodoApp extends React.Component {
   render() {
     return (
       <div>
-        <TodoTitle todoCount={this.state.todos.length}/>
-        <TodoForm addTodo={this.addTodo.bind(this)}/>
+        <TodoTitle todoCount={this.state.todos.length} />
+        <TodoForm addTodo={this.addTodo.bind(this)} />
         <TodoList
           todos={this.state.todos}
           remove={this.handleRemove.bind(this)}

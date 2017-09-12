@@ -1,13 +1,13 @@
 import React from 'react';
 import Timer from './Timer';
 
-const GreeterApp = (props) => (
+const TimerApp = (props) => (
   <div>
     <h1>Timers</h1>
-    <Timer name="eggs" startTime={15} />
-    <Timer name="grits" startTime={30}/>
-    <Timer name="bacon" startTime={60 * 7}/>
+    <Timer name="Eggs" startTime={60 * 3} />
+    <Timer name="Grits" startTime={60 * 5}/>
+    <Timer name="Bacon" startTime={60 * 7}/>
   </div>
 );
 
-export default GreeterApp;
+export default TimerApp;

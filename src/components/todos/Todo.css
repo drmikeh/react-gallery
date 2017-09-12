@@ -5,3 +5,8 @@
   margin-bottom: -1px;
   background-color: #fff;
 }
+
+.badge {
+  color: #fff !important;
+  background-color: #337ab7 !important;
+}

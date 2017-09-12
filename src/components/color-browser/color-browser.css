@@ -2,3 +2,8 @@
   width: 600px;
   margin: auto;
 }
+
+input[type=range] {
+  display: inline-block !important;
+  width: 50% !important;
+}

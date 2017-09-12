@@ -9,7 +9,7 @@ const TodoForm = ({addTodo}) => {
         addTodo(input.value);
         input.value = '';
       }}>
-      <input placeholder="Enter text" ref={node => {
+      <input placeholder="Enter todo" ref={node => {
         input = node;
       }} />
       <br />

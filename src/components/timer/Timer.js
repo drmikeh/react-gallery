@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import Interval from './interval';
 import Editable from 'react-x-editable';
 import TimerDoneSound from './TimerDoneSound';
+import { ButtonGroup, Button } from 'react-bootstrap';
 
 import './Timer.css';
 
@@ -78,12 +79,12 @@ class Timer extends Component {
   render () {
     const timeRemaining = this.state.timeRemaining / 10;
     const seconds = Math.floor(timeRemaining);
-    const finalSecondsClassName = timeRemaining > 0 ? 'final-seconds' : '';
+    const finalSecondsClassName = timeRemaining > 0 ? 'remaining final-seconds' : 'remaining';
     const remaining = seconds > 9 ?
-      <span>{getMinutesAndSeconds(seconds)}</span> :
+      <span className={'remaining'}>{getMinutesAndSeconds(seconds)}</span> :
       <span className={finalSecondsClassName}>{timeRemaining.toFixed(1)}</span>;
     const toggleLabel = this.state.isRunning ? 'Pause' : 'Start';
-    const toggleClass = this.state.isRunning ? 'pause' : 'start';
+    const toggleButtonStyle = this.state.isRunning ? 'warning' : 'success';
     const timerDoneSound = this.state.isDone ? <TimerDoneSound /> : null;
     const additionalTimerClassName = this.state.isDone ? 'done' :
                                      this.state.isRunning ? 'running' : '';
@@ -99,25 +100,28 @@ class Timer extends Component {
           />
         </h3>
         <br/>
-
         {remaining}
-        <button
-          disabled={this.state.isDone}
-          className={toggleClass}
-          onClick={this.toggle.bind(this)}>{toggleLabel}
-        </button>
-        <button
-          className={'reset'}
-          onClick={this.reset.bind(this)}>Reset
-        </button>
-        <button
-          disabled={this.state.isDone}
-          onClick={this.add30.bind(this)}>+30
-        </button>
-        <button
-          disabled={this.state.isDone}
-          onClick={this.sub30.bind(this)}>-30
-        </button>
+        <ButtonGroup>
+          <Button
+            disabled={this.state.isDone}
+            bsStyle={toggleButtonStyle}
+            onClick={this.toggle.bind(this)}>{toggleLabel}
+          </Button>
+          <Button
+            bsStyle='danger'
+            onClick={this.reset.bind(this)}>Reset
+          </Button>
+          <Button
+            bsStyle='primary'
+            disabled={this.state.isDone}
+            onClick={this.add30.bind(this)}>+30
+          </Button>
+          <Button
+            bsStyle='primary'
+            disabled={this.state.isDone}
+            onClick={this.sub30.bind(this)}>-30
+          </Button>
+        </ButtonGroup>
         {timerDoneSound}
       </div>
     );

@@ -1,4 +1,5 @@
 import React from 'react';
+import { ButtonGroup, Button } from 'react-bootstrap';
 
 import './Counter.css';
 
@@ -28,8 +29,10 @@ class CounterApp extends React.Component {
       <div>
         <h1>Counter</h1>
         <p>The count is {this.state.count}</p>
-        <button onClick={this.decrement.bind(this)}>Decrement</button>
-        <button onClick={this.increment.bind(this)}>Increment</button>
+        <ButtonGroup>
+          <Button bsStyle='danger' onClick={this.decrement.bind(this)}>Decrement</Button>
+          <Button bsStyle='success' onClick={this.increment.bind(this)}>Increment</Button>
+        </ButtonGroup>
       </div>
     );
   }

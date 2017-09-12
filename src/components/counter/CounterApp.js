@@ -17,8 +17,9 @@ class CounterApp extends React.Component {
   }
 
   decrement() {
+    const newValue = Math.max(0, this.state.count - 1);
     this.setState({
-      count: this.state.count - 1
+      count: newValue
     });
   }
 
@@ -27,8 +28,8 @@ class CounterApp extends React.Component {
       <div>
         <h1>Counter</h1>
         <p>The count is {this.state.count}</p>
-        <button onClick={this.increment.bind(this)}>Increment</button>
         <button onClick={this.decrement.bind(this)}>Decrement</button>
+        <button onClick={this.increment.bind(this)}>Increment</button>
       </div>
     );
   }

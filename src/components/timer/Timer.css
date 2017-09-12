@@ -1,0 +1,43 @@
+@import url('/node_modules/font-awesome/css/font-awesome.min.css');
+@import url('https://fonts.googleapis.com/css?family=Raleway');
+@import url('https://fonts.googleapis.com/css?family=Open+Sans');
+
+@import url('https://maxcdn.bootstrapcdn.com/bootstrap/latest/css/bootstrap.min.css');
+
+label {
+  display: inline-block;
+  width: 100px;
+}
+
+.timer {
+  border: 1px solid blue;
+  border-radius: 15px;
+  width: 400px;
+  margin: 30px auto;
+  padding: 10px;
+}
+
+.running {
+  background-color: #80ffa0;
+}
+
+.done {
+  color: white;
+  background-color: red;
+}
+
+.final-seconds {
+   color: red;
+}
+
+.start {
+  background-color: #80ffa0;
+}
+
+.pause {
+  background-color: yellow;
+}
+
+.reset {
+  background-color: red;
+}

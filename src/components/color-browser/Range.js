@@ -1,6 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
+import './Range.css';
+
 const Range = ({name, label, min, max, value, onChange}) => {
   return (
     <div>

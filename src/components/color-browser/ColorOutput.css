@@ -1,9 +1,10 @@
 .color-output {
   margin: auto;
-  width: 200px;
+  width: 400px;
   height: 200px;
   border-radius: 15px;
 }
 .color-output p {
-  padding-top: 90px;
+  padding-top: 80px;
+  font-size: 2em;
 }

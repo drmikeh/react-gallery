@@ -2,9 +2,10 @@ import React, { Component } from 'react';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 
 import Navbar from './Navbar';
-import Clock from './Clock';
+import ClockApp from './clock/ClockApp';
+import TimerApp from './timer/TimerApp';
 import CounterApp from './counter/CounterApp';
-import Greeter from './Greeter';
+import GreeterApp from './greeter/GreeterApp';
 import TodoApp from './todos/TodoApp';
 import ColorBrowserApp from './color-browser/ColorBrowserApp';
 
@@ -12,16 +13,6 @@ import './App.css';
 
 const HomePage = (props) => ( <article> <h1>Home</h1> </article> );
 const AboutPage = (props) => ( <article> <h1>About</h1> </article> );
-
-const GreeterPage = (props) => (
-  <div>
-    <Greeter name="Pat" />
-    <Greeter name="Shane" />
-    <Greeter name="Brandon" />
-    <Greeter name="Mike" />
-    <Greeter />
-  </div>
-);
 
 class App extends Component {
   render() {
@@ -34,9 +25,10 @@ class App extends Component {
 
           <Switch>
             <Route exact path="/" component={HomePage} />
-            <Route path="/greetings" component={GreeterPage} />
+            <Route path="/greetings" component={GreeterApp} />
             <Route path="/counter" component={CounterApp} />
-            <Route path="/clock" component={Clock} />
+            <Route path="/clock" component={ClockApp} />
+            <Route path="/timer" component={TimerApp} />
             <Route path="/todos" component={TodoApp} />
             <Route path="/color-browser" component={ColorBrowserApp} />
             <Route path="/about" component={AboutPage} />

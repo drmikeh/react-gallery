@@ -6,6 +6,10 @@
   background-color: #fff;
 }
 
+.completed {
+  text-decoration: line-through;
+}
+
 .badge {
   color: #fff !important;
   background-color: #337ab7 !important;

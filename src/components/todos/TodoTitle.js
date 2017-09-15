@@ -1,5 +1,5 @@
 import React from 'react';
-import { Badge, Label } from 'react-bootstrap';
+import { Badge } from 'react-bootstrap';
 
 const TodoTitle = ({todoCount}) => {
   return (

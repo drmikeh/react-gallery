@@ -25,20 +25,38 @@ class TodoApp extends React.Component {
   }
 
   addTodo(val) {
-    const todo = { text: val };
+    const todo = { text: val, completed: false };
     axios.post(this.apiUrl, todo)
     .then((res) => {
-      this.state.todos.push(res.data);
-      this.setState({ todos: this.state.todos });
+      this.setState({ todos: [...this.state.todos, res.data] });
     });
   }
 
-  handleRemove(id) {
+  removeTodo(id) {
     // Filter all todos except the one to be removed
     const remaining = this.state.todos.filter(todo => todo.id !== id);
-    axios.delete(this.apiUrl+'/'+id)
+    axios.delete(this.apiUrl + '/' + id)
     .then((res) => {
       this.setState({todos: remaining});
+    });
+  }
+
+  toggleCompleted(id) {
+    const foundTodo = this.state.todos.filter(todo => todo.id === id)[0];
+    const updatedTodo = {
+      ...foundTodo,
+      completed: !foundTodo.completed
+    };
+    axios.put(this.apiUrl + '/' + id, updatedTodo)
+    .then((res) => {
+      console.log('put returned:', res.data);
+      const updatedTodoFromServer = res.data;
+      const index = this.state.todos.indexOf(foundTodo);
+      this.setState({ todos: [
+          ...this.state.todos.slice(0, index),
+          updatedTodoFromServer,
+         ...this.state.todos.slice(index + 1)
+       ] });
     });
   }
 
@@ -49,7 +67,8 @@ class TodoApp extends React.Component {
         <TodoForm addTodo={this.addTodo.bind(this)} />
         <TodoList
           todos={this.state.todos}
-          remove={this.handleRemove.bind(this)}
+          toggle={this.toggleCompleted.bind(this)}
+          remove={this.removeTodo.bind(this)}
         />
       </div>
     );

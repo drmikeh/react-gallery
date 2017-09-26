@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Panel } from 'react-bootstrap';
 
 class Clock extends Component {
   constructor(props) {
@@ -9,25 +10,27 @@ class Clock extends Component {
   }
 
   tick() {
+    console.log('tick');
     this.setState({
       date: new Date()
     });
   }
 
   componentDidMount() {
+    console.log('ClockApp componentDidMount');
     this.timerID = setInterval(() => this.tick(), 1000);
   }
 
   componentWillUnmount() {
+    console.log('ClockApp componentWillUnmount');
     clearInterval(this.timerID);
   }
 
   render() {
     return (
-      <div>
-        <h1>Clock</h1>
+      <Panel header='Clock' className='example'>
         <h2>It is <span style={{color: 'blue'}}>{this.state.date.toLocaleTimeString()}</span>.</h2>
-      </div>
+      </Panel>
     );
   }
 }

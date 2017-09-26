@@ -1,0 +1,7 @@
+.quote {
+  background-color: #dbe4f0;
+  border-radius: 5px;
+}
+blockquote {
+  border-right: none !important;
+}

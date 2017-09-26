@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import Interval from './interval';
 import Editable from 'react-x-editable';
 import TimerDoneSound from './TimerDoneSound';
-import { ButtonGroup, Button } from 'react-bootstrap';
+import { ButtonGroup, Button, Panel } from 'react-bootstrap';
 
 import './Timer.css';
 
@@ -24,6 +24,7 @@ class Timer extends Component {
     super(props)
     this.state = {
       isRunning: false,
+      isPaused: false,
       isDone: false,
       timeRemaining: props.startTime * 10
     };
@@ -34,6 +35,7 @@ class Timer extends Component {
   reset() {
     this.setState({
       isRunning: false,
+      isPaused: false,
       isDone: false,
       timeRemaining: this.props.startTime * 10
     });
@@ -72,7 +74,8 @@ class Timer extends Component {
 
   toggle() {
     this.setState({
-      isRunning: !this.state.isRunning
+      isRunning: !this.state.isRunning,
+      isPaused: !!this.state.isRunning
     });
   }
 
@@ -86,20 +89,29 @@ class Timer extends Component {
     const toggleLabel = this.state.isRunning ? 'Pause' : 'Start';
     const toggleButtonStyle = this.state.isRunning ? 'warning' : 'success';
     const timerDoneSound = this.state.isDone ? <TimerDoneSound /> : null;
-    const additionalTimerClassName = this.state.isDone ? 'done' :
-                                     this.state.isRunning ? 'running' : '';
+    const bsStyle = this.state.isDone ? 'danger' :
+                    this.state.isRunning ? 'success' :
+                    this.state.isPaused ? 'warning' : 'info';
+
+    const header = (
+      <h3>
+        <Editable
+          name="name"
+          dataType="text"
+          mode="popup"
+          title="Please enter name"
+          value={this.props.name}
+        />
+        <Button
+          bsStyle="danger"
+          bsSize="xsmall"
+          className="pull-right"
+          style={{color: 'white', marginTop: '-20px'}}
+          onClick={() => this.props.onRemove(this.props.id)}>X</Button>
+      </h3>
+    );
     return (
-      <div className={'timer ' + additionalTimerClassName}>
-        <h3>
-          <Editable
-            name="name"
-            dataType="text"
-            mode="popup"
-            title="Please enter name"
-            value={this.props.name}
-          />
-        </h3>
-        <br/>
+      <Panel header={header} bsStyle={bsStyle}>
         {remaining}
         <ButtonGroup>
           <Button
@@ -123,7 +135,7 @@ class Timer extends Component {
           </Button>
         </ButtonGroup>
         {timerDoneSound}
-      </div>
+      </Panel>
     );
   }
 }

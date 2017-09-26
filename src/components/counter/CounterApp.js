@@ -1,5 +1,5 @@
 import React from 'react';
-import { ButtonGroup, Button } from 'react-bootstrap';
+import { Panel, ButtonGroup, Button } from 'react-bootstrap';
 
 import './Counter.css';
 
@@ -26,14 +26,13 @@ class CounterApp extends React.Component {
 
   render() {
     return (
-      <div>
-        <h1>Counter</h1>
+      <Panel header='Counter' className='example'>
         <p>The count is {this.state.count}</p>
         <ButtonGroup>
           <Button bsStyle='danger' onClick={this.decrement.bind(this)}>Decrement</Button>
           <Button bsStyle='success' onClick={this.increment.bind(this)}>Increment</Button>
         </ButtonGroup>
-      </div>
+      </Panel>
     );
   }
 }

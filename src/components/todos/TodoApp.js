@@ -5,6 +5,7 @@ import TodoTitle from './TodoTitle';
 import TodoForm from './TodoForm';
 import TodoList from './TodoList';
 
+import { Panel } from 'react-bootstrap';
 import './Todo.css';
 
 class TodoApp extends React.Component {
@@ -61,16 +62,16 @@ class TodoApp extends React.Component {
   }
 
   render() {
+    const title = <TodoTitle todoCount={this.state.todos.length} />;
     return (
-      <div>
-        <TodoTitle todoCount={this.state.todos.length} />
+      <Panel header={title} className='example'>
         <TodoForm addTodo={this.addTodo.bind(this)} />
         <TodoList
           todos={this.state.todos}
           toggle={this.toggleCompleted.bind(this)}
           remove={this.removeTodo.bind(this)}
         />
-      </div>
+      </Panel>
     );
   }
 }

@@ -1,0 +1,20 @@
+[
+  {
+    "id": 1,
+    "text": "Science progresses one funeral at a time.",
+    "tags": ["science"],
+    "author": "Max Planck"
+  },
+  {
+    "id": 2,
+    "text": "Insanity: doing the same thing over and over again and expecting different results.",
+    "tags": ["humanity"],
+    "author": "Albert Einstein"
+  },
+  {
+    "id": 3,
+    "text": "Everything should be made as simple as possible, but not simpler.",
+    "tags": ["science", "design"],
+    "author": "Albert Einstein"
+  }
+]

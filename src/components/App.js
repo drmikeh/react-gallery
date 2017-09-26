@@ -8,11 +8,13 @@ import CounterApp from './counter/CounterApp';
 import GreeterApp from './greeter/GreeterApp';
 import TodoApp from './todos/TodoApp';
 import ColorBrowserApp from './color-browser/ColorBrowserApp';
+import QuoteMgr from './quote-mgr/QuoteMgr';
 
+import { Panel } from 'react-bootstrap';
 import './App.css';
 
-const HomePage = (props) => ( <article> <h1>Home</h1> </article> );
-const AboutPage = (props) => ( <article> <h1>About</h1> </article> );
+const HomePage  = (props) => ( <Panel header='Home'  className="example"></Panel> );
+const AboutPage = (props) => ( <Panel header='About' className="example"></Panel> );
 
 class App extends Component {
   render() {
@@ -31,6 +33,7 @@ class App extends Component {
             <Route path="/timer" component={TimerApp} />
             <Route path="/todos" component={TodoApp} />
             <Route path="/color-browser" component={ColorBrowserApp} />
+            <Route path="/quotes" component={QuoteMgr} />
             <Route path="/about" component={AboutPage} />
           </Switch>
         </div>

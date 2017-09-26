@@ -1,15 +1,15 @@
 import React from 'react';
+import { Panel } from 'react-bootstrap';
 import Greeter from './Greeter';
 
 const GreeterApp = (props) => (
-  <div>
-    <h1>Greetings</h1>
+  <Panel header='Greetings' className='example'>
     <Greeter name="Pat" />
     <Greeter name="Shane" />
     <Greeter name="Brandon" />
     <Greeter name="Mike" />
     <Greeter />
-  </div>
+  </Panel>
 );
 
 export default GreeterApp;

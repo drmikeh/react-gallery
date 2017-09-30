@@ -25,7 +25,7 @@ class StockPricesApp extends React.Component {
   }
   async componentDidMount() {
     try {
-      const prices = (await axios.get('apple-stock-prices.json')).data;
+      const prices = (await axios.get('/apple-stock-prices.json')).data;
       console.log('prices:', prices);
       const chartConfig = Object.assign({}, this.state.chartConfig, {
         series: [{

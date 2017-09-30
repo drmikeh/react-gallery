@@ -1,11 +1,13 @@
 import React from 'react';
-// import ReactHighstock from 'react-highcharts/ReactHighstock.src';
 import Highcharts from 'highcharts';
-import { Panel } from 'react-bootstrap';
 
 const config = {
   chart: {
     marginRight: 80 // like left
+  },
+  title: {
+    enabled: true,
+    text: "Line Chart",
   },
   xAxis: {
     categories: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
@@ -42,10 +44,7 @@ export default class LineChart extends React.Component {
   }
   render(){
     return (
-      <Panel header='Line Chart' className='example'>
-        {/* <ReactHighstock config={config}/> */}
         <div id="chart" style={ {height: '400px'} }></div>
-      </Panel>
     );
   }
 }

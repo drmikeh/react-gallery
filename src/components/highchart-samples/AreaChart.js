@@ -1,8 +1,5 @@
 import React from 'react';
-// import ReactHighstock from 'react-highcharts/ReactHighstock.src';
 import Highcharts from 'highcharts';
-
-import { Panel } from 'react-bootstrap';
 
 const config = {
   credits: {
@@ -12,12 +9,14 @@ const config = {
     zoomType: "xy"
   },
   title: {
-    text: ""
+    enabled: true,
+    text: "Area Chart",
   },
   legend: {
     enabled: true,
     layout: "horizontal",
     verticalAlign: "top",
+    itemMarginTop: 20
   },
   xAxis: {
     categories: [
@@ -110,10 +109,7 @@ export default class AreaChart extends React.Component {
   }
   render(){
     return (
-      <Panel header='Line Chart' className='example'>
-        {/* <ReactHighstock config={config}/> */}
-        <div id="chart" style={ {height: '400px'} }></div>
-      </Panel>
+      <div id="chart" style={ {height: '400px'} }></div>
     );
   }
 }

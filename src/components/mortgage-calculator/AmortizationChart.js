@@ -38,12 +38,16 @@ const getConfig = (amortization) => {
       zoomType: "xy",
     },
     title: {
-      text: "Amortization"
+      enabled: false,
+      text: "Amortization",
+      // margin: 30
     },
     legend: {
       enabled: true,
       layout: "horizontal",
       verticalAlign: "top",
+      // margin: 10
+      itemMarginTop: 20,
     },
     xAxis: {
       type: 'category',

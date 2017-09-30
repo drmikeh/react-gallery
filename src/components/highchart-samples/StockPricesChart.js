@@ -1,6 +1,5 @@
 import React from 'react';
 import axios from 'axios';
-import { Panel } from 'react-bootstrap';
 import ReactHighstock from 'react-highcharts/ReactHighstock.src';
 
 const defaultChartConfig = {
@@ -46,9 +45,7 @@ class StockPricesApp extends React.Component {
 
   render() {
     return (
-      <Panel header='Quotes' className="example">
-        <ReactHighstock isPureConfig config={this.state.chartConfig}/>
-      </Panel>
+      <ReactHighstock isPureConfig config={this.state.chartConfig}/>
     );
   }
 }

@@ -17,12 +17,16 @@ export default (startDate, loanAmount, rate, years, paymentsPerYear, taxesAndFee
   const factor = (1+r)**n;
   const principalPlusInterestPayment = r > 0 ? loanAmount * r * factor / (factor - 1) : loanAmount / n;
   const totalPayment = principalPlusInterestPayment + taxesAndFees;
-  const totalCost = totalPayment * n;
 
   let bal = loanAmount;
   let date = new Date(startDate.getTime());
   const paymentSchedule = [];
-  for (let i = 0; i <= n; i++) {
+
+  let totalCost = 0;
+  let totalPrincipal = 0;
+  let totalInterest = 0;
+  let totalTaxesAndFees = 0;
+  for (let i = 0; i < n; i++) {
     const interest = bal * r;
     const principal = principalPlusInterestPayment - interest;
     bal -= principal;
@@ -34,6 +38,10 @@ export default (startDate, loanAmount, rate, years, paymentsPerYear, taxesAndFee
       taxesAndFees
     };
     paymentSchedule.push(row);
+    totalCost += principal + interest + taxesAndFees;
+    totalPrincipal += principal;
+    totalInterest += interest;
+    totalTaxesAndFees += taxesAndFees;
     date.setMonth(date.getMonth() + 1);
   }
 
@@ -56,6 +64,10 @@ export default (startDate, loanAmount, rate, years, paymentsPerYear, taxesAndFee
     paymentsPerYear,
     principalPlusInterestPayment,
     totalPayment,
-    totalCost, schedule: yearlySchedule
+    totalCost,
+    totalPrincipal,
+    totalInterest,
+    totalTaxesAndFees,
+    schedule: yearlySchedule
   };
 };

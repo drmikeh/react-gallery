@@ -16,10 +16,8 @@ class Navbar extends Component {
           <li><Link to='/todos'>Todos</Link></li>
           <li><Link to='/color-browser'>Color Browser</Link></li>
           <li><Link to='/quotes'>Quotes</Link></li>
-          <li><Link to='/stocks'>Stock Prices</Link></li>
           <li><Link to='/mortgage'>Mortgage Calculator</Link></li>
-          <li><Link to='/linechart'>Line Chart</Link></li>
-          <li><Link to='/areachart'>Area Chart</Link></li>
+          <li><Link to='/charts'>Sample Charts</Link></li>
           <li><Link to='/about'>About</Link></li>
         </ul>
       </nav>

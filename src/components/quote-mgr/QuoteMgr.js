@@ -1,5 +1,4 @@
 import React from 'react';
-// import PropTypes from 'prop-types';
 import axios from 'axios';
 import Quote from './Quote';
 import { Panel } from 'react-bootstrap';

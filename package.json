@@ -2,6 +2,7 @@
   "name": "react-demos",
   "version": "0.1.0",
   "private": true,
+  "homepage" : "https://drmikeh.github.io/react-gallery",
   "dependencies": {
     "axios": "^0.16.2",
     "react": "^15.6.1",

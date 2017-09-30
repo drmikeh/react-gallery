@@ -29,8 +29,15 @@ class CounterApp extends React.Component {
       <Panel header='Counter' className='example'>
         <p>The count is {this.state.count}</p>
         <ButtonGroup>
-          <Button bsStyle='danger' onClick={this.decrement.bind(this)}>Decrement</Button>
-          <Button bsStyle='success' onClick={this.increment.bind(this)}>Increment</Button>
+          <Button
+            bsStyle='danger'
+            onClick={this.decrement.bind(this)}
+            disabled={this.state.count === 0} >Decrement
+          </Button>
+          <Button
+            bsStyle='success'
+            onClick={this.increment.bind(this)}>Increment
+          </Button>
         </ButtonGroup>
       </Panel>
     );

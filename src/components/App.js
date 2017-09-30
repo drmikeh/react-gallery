@@ -9,6 +9,10 @@ import GreeterApp from './greeter/GreeterApp';
 import TodoApp from './todos/TodoApp';
 import ColorBrowserApp from './color-browser/ColorBrowserApp';
 import QuoteMgr from './quote-mgr/QuoteMgr';
+import StockPricesApp from './stocks/StockPricesApp';
+import MortgageCalcApp from './mortgage-calculator/MortgageCalcApp';
+import LineChart from './highchart-samples/LineChart';
+import AreaChart from './highchart-samples/AreaChart';
 
 import { Panel } from 'react-bootstrap';
 import './App.css';
@@ -24,7 +28,6 @@ class App extends Component {
           <header>
             <Navbar />
           </header>
-
           <Switch>
             <Route exact path="/" component={HomePage} />
             <Route path="/greetings" component={GreeterApp} />
@@ -34,6 +37,10 @@ class App extends Component {
             <Route path="/todos" component={TodoApp} />
             <Route path="/color-browser" component={ColorBrowserApp} />
             <Route path="/quotes" component={QuoteMgr} />
+            <Route path="/stocks" component={StockPricesApp} />
+            <Route path="/mortgage" component={MortgageCalcApp} />
+            <Route path="/linechart" component={LineChart} />
+            <Route path="/areachart" component={AreaChart} />
             <Route path="/about" component={AboutPage} />
           </Switch>
         </div>

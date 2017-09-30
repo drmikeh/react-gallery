@@ -1,6 +1,6 @@
 import React from 'react';
 import axios from 'axios';
-import Config from '../config';
+import Config from '../../config';
 import Quote from './Quote';
 import { Panel } from 'react-bootstrap';
 import './quotes.css';

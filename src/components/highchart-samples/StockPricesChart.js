@@ -1,6 +1,6 @@
 import React from 'react';
 import axios from 'axios';
-import Config from '../config';
+import Config from '../../config';
 import ReactHighstock from 'react-highcharts/ReactHighstock.src';
 
 const defaultChartConfig = {

@@ -21,7 +21,7 @@ const AboutPage = (props) => ( <Panel header='About' className="example"></Panel
 class App extends Component {
   render() {
     return (
-      <Router>
+      <Router basename="/react-gallery">
         <div className="App">
           <header>
             <Navbar />

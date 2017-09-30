@@ -1,5 +1,6 @@
 import React from 'react';
 import axios from 'axios';
+import Config from '../config';
 import Quote from './Quote';
 import { Panel } from 'react-bootstrap';
 import './quotes.css';
@@ -15,7 +16,7 @@ class QuoteMgr extends React.Component {
 
   async componentDidMount() {
     try {
-      const quotes = (await axios.get('/quotes.json')).data;
+      const quotes = (await axios.get(`${Config.basename}/quotes.json`)).data;
       this.setState({ quotes });
     }
     catch (err) {

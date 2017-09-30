@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 
+import Config from '../config';
 import Navbar from './Navbar';
 import ClockApp from './clock/ClockApp';
 import TimerApp from './timer/TimerApp';
@@ -10,7 +11,7 @@ import TodoApp from './todos/TodoApp';
 import ColorBrowserApp from './color-browser/ColorBrowserApp';
 import QuoteMgr from './quote-mgr/QuoteMgr';
 import MortgageCalcApp from './mortgage-calculator/MortgageCalcApp';
-import SampleCharts from './highchart-samples/SampleCharts';
+import SampleCharts from './highchart-samples/SampleCharts'
 
 import { Panel } from 'react-bootstrap';
 import './App.css';
@@ -21,7 +22,7 @@ const AboutPage = (props) => ( <Panel header='About' className="example"></Panel
 class App extends Component {
   render() {
     return (
-      <Router basename="/react-gallery">
+      <Router basename={Config.basename}>
         <div className="App">
           <header>
             <Navbar />

@@ -1,5 +1,6 @@
 import React from 'react';
 import axios from 'axios';
+import Config from '../config';
 import ReactHighstock from 'react-highcharts/ReactHighstock.src';
 
 const defaultChartConfig = {
@@ -25,7 +26,7 @@ class StockPricesApp extends React.Component {
   }
   async componentDidMount() {
     try {
-      const prices = (await axios.get('/apple-stock-prices.json')).data;
+      const prices = (await axios.get(`${Config.basename}/apple-stock-prices.json`)).data;
       console.log('prices:', prices);
       const chartConfig = Object.assign({}, this.state.chartConfig, {
         series: [{

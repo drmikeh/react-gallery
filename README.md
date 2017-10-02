@@ -1,3 +1,14 @@
+# React Gallery
+
+## Introduction
+
+This app is a collection of simple React components for demo and instructional purposes.
+
+The app has been deployed to [GitHub Pages](https://drmikeh.github.io/react-gallery/).
+
+
+## React Development
+
 This project was bootstrapped with [Create React App](https://github.com/facebookincubator/create-react-app).
 
 Below you will find some information on how to perform common tasks.<br>

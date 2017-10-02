@@ -19,7 +19,9 @@ const getConfig = (amortization) => {
           color: "#000000",
           connectorColor: "#000000",
           formatter() {
-            return "<b>" + this.point.name + "</b>: <span style=\"font-weight: normal;\">$" + this.point.y.formatMoney(2) + "</span>";
+            const total = this.series.data.reduce((a, b) => a + b.y, 0);
+            const percentage=((this.y / total) * 100).toFixed(1);
+            return `<b>${this.point.name}</b>: <span style="font-weight: normal;">$${this.point.y.formatMoney(2)} (${percentage}%)</span>`;
           }
         }
       }
@@ -35,26 +37,10 @@ const getConfig = (amortization) => {
       name: "Cost Breakdown",
       innerSize: "50%",
       data: [
-        {
-          name: "Principal",
-          y: amortization.totalPrincipal,
-          color: "#155776"
-        },
-        {
-          name: "Interest",
-          y: amortization.totalInterest,
-          color: "#2085B5"
-        },
-        {
-          name: "Tax",
-          y: amortization.totalTaxesAndFees,
-          color: "#86C9EA"
-        },
-        {
-          name: "Insurance",
-          y: 32708.33,
-          color: "#8ECAE8"
-        }
+        { name: "Principal", color: "#155776", y: amortization.totals.principal },
+        { name: "Interest",  color: "#2085B5", y: amortization.totals.interest  },
+        { name: "Taxes",     color: "#86C9EA", y: amortization.totals.taxes     },
+        { name: "Insurance", color: "#A0E0FF", y: amortization.totals.insurance }
       ]
     }]
   }

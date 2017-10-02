@@ -47,7 +47,8 @@ class MortgageCalcApp extends React.Component {
       rate: 3.79,
       term: 30,
       paymentsPerYear: 12,
-      taxesAndFees: 1000
+      taxes: 7562.29 + 1368.96,
+      insurance: 1552.00
     };
     this.update = this.update.bind(this);
   }
@@ -63,7 +64,8 @@ class MortgageCalcApp extends React.Component {
       this.state.rate,
       this.state.term,
       this.state.paymentsPerYear,
-      this.state.taxesAndFees
+      this.state.taxes,
+      this.state.insurance
     );
     console.log('amortization:', amortization);
     return (
@@ -75,19 +77,28 @@ class MortgageCalcApp extends React.Component {
                 amount = {this.state.amount}
                 rate = {this.state.rate}
                 term = {this.state.term}
-                taxesAndFees = {this.state.taxesAndFees}
+                taxes = {this.state.taxes}
+                insurance = {this.state.insurance}
                 update = {this.update}
               />
               <hr/>
               <h3>Repayment Summary</h3>
               {/* <p>You entered ${this.state.amount.formatMoney()} for {this.state.term} years at {this.state.rate}%</p> */}
-              <h4>Your monthly Payment is: ${amortization.principalPlusInterestPayment.formatMoney()}</h4>
-
+              <h4>Payments</h4>
               <dl className="dl-horizontal">
-                <dt>Total principal:</dt><dd>${amortization.totalPrincipal.formatMoney()}</dd>
-                <dt>Total interest:</dt><dd>${amortization.totalInterest.formatMoney()}</dd>
-                <dt>Total taxes and fees:</dt><dd>${amortization.totalTaxesAndFees.formatMoney()}</dd>
-                <dt>Total cost of mortgage:</dt><dd>${amortization.totalCost.formatMoney()}</dd>
+                <dt>P&I:</dt><dd>${amortization.payments.principalPlusInterest.formatMoney()}</dd>
+                <dt>Taxes:</dt><dd>${amortization.payments.taxes.formatMoney()}</dd>
+                <dt>Insurance:</dt><dd>${amortization.payments.insurance.formatMoney()}</dd>
+                <dt>Total Payment:</dt><dd>${amortization.totals.payment.formatMoney()}</dd>
+              </dl>
+              <hr/>
+              <h4>Totals</h4>
+              <dl className="dl-horizontal">
+                <dt>Total principal:</dt><dd>${amortization.totals.principal.formatMoney()}</dd>
+                <dt>Total interest:</dt><dd>${amortization.totals.interest.formatMoney()}</dd>
+                <dt>Total taxes:</dt><dd>${amortization.totals.taxes.formatMoney()}</dd>
+                <dt>Total insurance:</dt><dd>${amortization.totals.insurance.formatMoney()}</dd>
+                <dt>Total cost of mortgage:</dt><dd>${amortization.totals.cost.formatMoney()}</dd>
               </dl>
             </Col>
             <Col md={8}>

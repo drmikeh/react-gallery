@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Form, FormGroup, InputGroup, FormControl, ControlLabel, Col } from 'react-bootstrap';
 
-const MortgageForm = ({amount, rate, term, taxesAndFees, update}) => {
+const MortgageForm = ({amount, rate, term, taxes, insurance, update}) => {
   return (
     <div>
       <h3>Loan Values</h3>
@@ -63,18 +63,35 @@ const MortgageForm = ({amount, rate, term, taxesAndFees, update}) => {
           </Col>
         </FormGroup>
 
-        <FormGroup controlId="taxesAndFees">
+        <FormGroup controlId="taxes">
           <Col componentClass={ControlLabel} sm={6}>
-            Taxes & Fees
+            Annual Taxes
           </Col>
           <Col sm={6}>
             <InputGroup>
               <FormControl
                 type="number"
                 placeholder="1000"
-                value={taxesAndFees}
+                value={taxes}
                 step="100"
-                onChange={(e) => update({ taxesAndFees: Number(e.target.value) })} />
+                onChange={(e) => update({ taxes: Number(e.target.value) })} />
+              <InputGroup.Addon>.00</InputGroup.Addon>
+            </InputGroup>
+          </Col>
+        </FormGroup>
+
+        <FormGroup controlId="insurance">
+          <Col componentClass={ControlLabel} sm={6}>
+            Annual Insurance
+          </Col>
+          <Col sm={6}>
+            <InputGroup>
+              <FormControl
+                type="number"
+                placeholder="400"
+                value={insurance}
+                step="100"
+                onChange={(e) => update({ insurance: Number(e.target.value) })} />
               <InputGroup.Addon>.00</InputGroup.Addon>
             </InputGroup>
           </Col>
@@ -88,7 +105,7 @@ MortgageForm.propTypes = {
   amount: PropTypes.number.isRequired,
   rate: PropTypes.number.isRequired,
   term: PropTypes.number.isRequired,
-  taxesAndFees: PropTypes.number.isRequired,
+  taxes: PropTypes.number.isRequired,
   update: PropTypes.func.isRequired
 };
 

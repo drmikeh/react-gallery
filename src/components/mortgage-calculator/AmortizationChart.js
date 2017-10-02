@@ -13,22 +13,25 @@ const getConfig = (amortization) => {
   // const principal = amortization.schedule.map( s => [s.date, s.principal] );
   // const interest = amortization.schedule.map( s => [s.date, s.interest] );
   // const balance = amortization.schedule.map( s => [s.date, s.balance] );
-  // const taxesAndFees = amortization.schedule.map( s => [s.date, s.taxesAndFees] );
+  // const taxes = amortization.schedule.map( s => [s.date, s.taxes] );
+  // const insurance = amortization.schedule.map( s => [s.date, s.insurance] );
   // const categories   = amortization.schedule.map( s => '' + new Date(s.date).getFullYear() );
   const categories   = amortization.schedule.map( s => '' + s.year );
   const principal    = amortization.schedule.map( s => s.principal );
   const interest     = amortization.schedule.map( s => s.interest );
   const balance      = amortization.schedule.map( s => s.balance );
-  const taxesAndFees = amortization.schedule.map( s => s.taxesAndFees );
+  const taxes        = amortization.schedule.map( s => s.taxes );
+  const insurance    = amortization.schedule.map( s => s.insurance );
 
-  const annualPaymentAmount = principal[1] + interest[1] + taxesAndFees[1];
+  const annualPaymentAmount = principal[1] + interest[1] + taxes[1] + insurance[1];
   const annualPaymentAmountRounded = Math.ceil(annualPaymentAmount / 10000) * 10000;
 
   console.log('categories:', categories);
   console.log('principal:', principal);
   console.log('interest:', interest);
   console.log('balance:', balance);
-  console.log('taxesAndFees:', taxesAndFees);
+  console.log('taxes:', taxes);
+  console.log('insurance:', insurance);
 
   return {
     credits: {
@@ -57,8 +60,8 @@ const getConfig = (amortization) => {
     yAxis: [
       {
         min: 0,
-        max: amortization.loanAmount,
-    	  tickInterval: amortization.loanAmount / 5,
+        max: amortization.input.loanAmount,
+    	  tickInterval: amortization.input.loanAmount / 5,
         minPadding: 0.5,
     		maxPadding: 0,
         title: {
@@ -98,8 +101,17 @@ const getConfig = (amortization) => {
         pointPadding: .02,
         groupPadding: .02,
         yAxis: 1,
-        name: "Taxes & Fees",
-        data: taxesAndFees,
+        name: "Insurance",
+        data: insurance,
+        type: "column",
+        color: "#A0E0FF"
+      },
+      {
+        pointPadding: .02,
+        groupPadding: .02,
+        yAxis: 1,
+        name: "Taxes",
+        data: taxes,
         type: "column",
         color: "#8ECAE8"
       },

@@ -1,0 +1,28 @@
+{
+  "name": "Sample Quiz 1",
+  "questions": [
+    {
+      "id": 1,
+      "type": "text",
+      "prompt": "What is your name?",
+      "topic": "Information"
+    },
+    {
+      "id": 2,
+      "type":   "multiple-choice",
+      "prompt": "What shape is the earth?",
+      "topic": "Geography",
+      "answer": "Round",
+      "difficulty": "easy",
+      "options": ["Round", "Square", "Triangular", "Brown"]
+    },
+    {
+      "id": 3,
+      "type":   "number",
+      "prompt": "How many continents are on earth?",
+      "topic": "Geography",
+      "answer": "7",
+      "difficulty": "easy"
+    }
+  ]
+}

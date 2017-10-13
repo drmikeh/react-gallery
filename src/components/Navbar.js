@@ -21,6 +21,7 @@ class Navbar extends Component {
           <li><Link to='/data-table'>Data Table</Link></li>
           <li><Link to='/mortgage'>Mortgage Calculator</Link></li>
           <li><Link to='/charts'>Sample Charts</Link></li>
+          <li><Link to='/quiz'>Quiz App</Link></li>
           <li><Link to='/about'>About</Link></li>
         </ul>
       </nav>

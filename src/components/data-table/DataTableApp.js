@@ -3,8 +3,6 @@ import { Panel } from 'react-bootstrap';
 import SmartDataTable from 'react-smart-data-table';
 import getTestData from './getTestData';
 
-console.log('SmartDataTable:', SmartDataTable);
-
 class DataTableApp extends React.Component {
 
   constructor(props){

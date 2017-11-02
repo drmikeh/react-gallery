@@ -10,7 +10,7 @@ import toastr from '../toastr/toastr';
 
 class QuizApp extends React.Component {
 
-  constructor(props){
+  constructor(props) {
     super(props);
     this.state = {
       quiz: {}

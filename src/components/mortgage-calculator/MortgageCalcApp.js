@@ -69,7 +69,7 @@ class MortgageCalcApp extends React.Component {
     );
     console.log('amortization:', amortization);
     return (
-      <Panel header='Mortgage Calculator' className='mortgage'>
+      <Panel header='Mortgage Calculator' className='example mortgage'>
         <Grid>
           <Row>
             <Col md={4}>
@@ -81,7 +81,8 @@ class MortgageCalcApp extends React.Component {
                 insurance = {this.state.insurance}
                 update = {this.update}
               />
-              <hr/>
+            </Col>
+            <Col md={6} span={2}>
               <h3>Repayment Summary</h3>
               {/* <p>You entered ${this.state.amount.formatMoney()} for {this.state.term} years at {this.state.rate}%</p> */}
               <h4>Payments</h4>
@@ -101,7 +102,9 @@ class MortgageCalcApp extends React.Component {
                 <dt>Total cost of mortgage:</dt><dd>${amortization.totals.cost.formatMoney()}</dd>
               </dl>
             </Col>
-            <Col md={8}>
+          </Row>
+          <Row>
+            <Col md={9}>
               <LinkContainer
                 to={`${this.props.match.path}/amortization`} activeClassName='btn-primary'>
                 <Button>Amortization</Button>
@@ -111,8 +114,14 @@ class MortgageCalcApp extends React.Component {
                 <Button>Breakdown</Button>
               </LinkContainer>
               <Switch>
-                <PropsRoute path={`${this.props.match.url}/amortization`} component={AmortizationChart} amortization={amortization} />
-                <PropsRoute path={`${this.props.match.url}/breakdown`} component={BreakdownChart} amortization={amortization} />
+                <PropsRoute
+                  path={`${this.props.match.url}/amortization`}
+                  component={AmortizationChart}
+                  amortization={amortization} />
+                <PropsRoute
+                  path={`${this.props.match.url}/breakdown`}
+                  component={BreakdownChart}
+                  amortization={amortization} />
                 <Redirect from={`${this.props.match.url}`} exact to={`${this.props.match.url}/amortization`} />
               </Switch>
             </Col>

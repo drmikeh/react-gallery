@@ -4,9 +4,11 @@
   "private": true,
   "homepage": "https://drmikeh.github.io/react-gallery",
   "dependencies": {
+    "autosuggest-highlight": "^3.1.1",
     "axios": "^0.16.2",
     "faker": "^4.1.0",
     "react": "^15.6.1",
+    "react-autosuggest": "^9.3.2",
     "react-bootstrap": "^0.31.3",
     "react-dom": "^15.6.1",
     "react-highcharts": "^12.0.0",

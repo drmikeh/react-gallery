@@ -9,9 +9,13 @@ class QuizSrc extends React.Component {
   }
 
   render() {
+    const headerButtonMessage = this.state.open ?
+      'Hide' :
+      'Show the JSON data defining this quiz'
+    ;
     const headerButton = (
       <Button onClick={ () => this.setState({ open: !this.state.open })}>
-        Click here to see the JSON data defining this quiz
+        {headerButtonMessage}
       </Button>
     );
     return (

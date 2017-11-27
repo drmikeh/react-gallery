@@ -15,7 +15,9 @@ import SuggestApp from './suggest/SuggestApp';
 import DataTableApp from './data-table/DataTableApp';
 import MortgageCalcApp from './mortgage-calculator/MortgageCalcApp';
 import SampleCharts from './highchart-samples/SampleCharts';
+import VideoApp from './video/VideoApp';
 import QuizApp from './quiz/QuizApp';
+import ErrorTest from './error-test/ErrorTest';
 
 import { Panel, Grid, Row, Col } from 'react-bootstrap';
 import './App.css';
@@ -49,6 +51,8 @@ class App extends Component {
                   <Route path="/mortgage" component={MortgageCalcApp} />
                   <Route path="/charts" component={SampleCharts} />
                   <Route path="/quiz" component={QuizApp} />
+                  <Route path="/video-player" component={VideoApp} />
+                  <Route path="/error-test" component={ErrorTest} />
                   <Route path="/about" component={AboutPage} />
                 </Switch>
               </Col>

@@ -13,7 +13,9 @@ class ErrorTest extends React.Component {
     };
   }
 
-  componentDidCatch() {
+  componentDidCatch(error, info) {
+    console.log('ERROR:', error);
+    console.log('ERROR info:', info);
     this.setState({
       errorCount: this.state.errorCount + 1,
       error: `You have now encountered ${this.state.errorCount} errors.`
@@ -31,6 +33,9 @@ class ErrorTest extends React.Component {
   }
 
   render() {
+    if (this.state.error) {
+      return <div>Sorry, something went wrong.</div>;
+    }
     return (
       <Panel header='Counter' className='example'>
         <p>The happyCount is {this.state.happyCount}</p>

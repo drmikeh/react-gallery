@@ -19,3 +19,12 @@
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+
+public/*.mp4
+public/*.m4v
+public/oceans
+public/qt-test-1.mov
+docs/*.mp4
+docs/*.m4v
+docs/oceans
+docs/qt-test-1.mov

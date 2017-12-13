@@ -22,8 +22,10 @@ class Navbar extends Component {
           <li><Link to='/mortgage'>Mortgage Calculator</Link></li>
           <li><Link to='/charts'>Sample Charts</Link></li>
           <li><Link to='/quiz'>Quiz App</Link></li>
+          <li><Link to='/forms'>Forms Examples</Link></li>
           <li><Link to='/video-player'>Video Player</Link></li>
           <li><Link to='/error-test'>React Error Test</Link></li>
+          <li><Link to='/recompose'>Recompose Examples</Link></li>
           <li><Link to='/about'>About</Link></li>
         </ul>
       </nav>

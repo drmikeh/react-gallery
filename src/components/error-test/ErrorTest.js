@@ -34,7 +34,12 @@ class ErrorTest extends React.Component {
 
   render() {
     if (this.state.error) {
-      return <div>Sorry, something went wrong.</div>;
+      return (
+        <div>
+          <p>Sorry, something went wrong.</p>
+          <p>{this.state.error}</p>
+        </div>
+      );
     }
     return (
       <Panel header='Counter' className='example'>

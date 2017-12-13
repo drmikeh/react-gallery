@@ -18,14 +18,19 @@
     "react-select": "^1.0.0-rc.10",
     "react-smart-data-table": "https://github.com/drmikeh/react-smart-data-table.git",
     "react-x-editable": "^0.0.5-beta",
+    "recompose": "^0.26.0",
     "toastr": "^2.1.2",
     "video.js": "^6.2.8",
     "videojs-chapter-thumbnails": "^3.2.0",
     "videojs-overlay": "^2.0.0"
   },
   "scripts": {
+    "prod": "REACT_APP_NODE_ENV=production react-scripts start",
     "start": "react-scripts start",
+    "dev": "yarn start",
     "build": "react-scripts build",
+    "predeploy": "yarn build",
+    "deploy": "gh-pages -d build",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject"
   }

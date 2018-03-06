@@ -14,6 +14,7 @@ const allColors = [
   { value: 'black',  text: 'black'  }
 ];
 
+// withPerson is an HOC containing all of the behavior we need.
 const withPerson = compose(
   defaultProps({ firstName: 'Joe', lastName: '', favoriteColor: '' }),
   withState('firstName', 'setFirstName', ({ firstName }) => firstName),
@@ -21,7 +22,9 @@ const withPerson = compose(
   withState('favoriteColor', 'setFavoriteColor', ({ favoriteColor }) => favoriteColor),
 );
 
-const PersonForm = withPerson( ({
+/* We define PersonForm as a render function that accepts an object containing
+   the props and state that we expect. */
+const PersonForm = ({
   firstName, setFirstName,
   lastName, setLastName,
   favoriteColor, setFavoriteColor,
@@ -54,6 +57,6 @@ const PersonForm = withPerson( ({
       />
     </div>
   );
-});
+};
 
-export default PersonForm;
+export default withPerson(PersonForm);

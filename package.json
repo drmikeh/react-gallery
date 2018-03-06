@@ -1,5 +1,5 @@
 {
-  "name": "react-demos",
+  "name": "react-gallery",
   "version": "0.1.0",
   "private": true,
   "homepage": "https://drmikeh.github.io/react-gallery",
@@ -14,7 +14,6 @@
     "react-highcharts": "^12.0.0",
     "react-router-bootstrap": "^0.24.4",
     "react-router-dom": "^4.2.2",
-    "react-scripts": "1.0.17",
     "react-select": "^1.0.0-rc.10",
     "react-smart-data-table": "https://github.com/drmikeh/react-smart-data-table.git",
     "react-x-editable": "^0.0.5-beta",
@@ -24,6 +23,15 @@
     "videojs-chapter-thumbnails": "^3.2.0",
     "videojs-overlay": "^2.0.0"
   },
+  "devDependencies": {
+    "eslint": "^4.12.0",
+    "eslint-config-airbnb": "^16.1.0",
+    "eslint-plugin-import": "^2.8.0",
+    "eslint-plugin-jsx-a11y": "^6.0.2",
+    "eslint-plugin-react": "^7.5.1",
+    "prettier": "^1.9.2",
+    "react-scripts": "1.0.17"
+  },
   "scripts": {
     "prod": "REACT_APP_NODE_ENV=production react-scripts start",
     "start": "react-scripts start",
@@ -32,6 +40,7 @@
     "predeploy": "yarn build",
     "deploy": "gh-pages -d build",
     "test": "react-scripts test --env=jsdom",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "lint": "yarn eslint src"
   }
 }

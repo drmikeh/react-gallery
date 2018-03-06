@@ -11,7 +11,7 @@ const addCounting = compose(
   })
 );
 
-const CounterWithHandlers = addCounting( ({ counter, setCounter, increment, decrement, reset }) => (
+const Counter = ({ counter, setCounter, increment, decrement, reset }) => (
   <div>
     <p>The count is {counter}</p>
     <ButtonGroup>
@@ -30,6 +30,8 @@ const CounterWithHandlers = addCounting( ({ counter, setCounter, increment, decr
       </Button>
     </ButtonGroup>
   </div>
-));
+);
+
+const CounterWithHandlers = addCounting(Counter);
 
 export default CounterWithHandlers;

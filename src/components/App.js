@@ -7,6 +7,7 @@ import ClockApp from './clock/ClockApp';
 import TimerApp from './timer/TimerApp';
 import ToastrApp from './toastr/ToastrApp';
 import CounterApp from './counter/CounterApp';
+import MobXCounterApp from './mobx-counter/MobXCounterApp';
 import GreeterApp from './greeter/GreeterApp';
 import TodoApp from './todos/TodoApp';
 import ColorBrowserApp from './color-browser/ColorBrowserApp';
@@ -42,6 +43,7 @@ class App extends Component {
                   <Route exact path="/" component={HomePage} />
                   <Route path="/greetings" component={GreeterApp} />
                   <Route path="/counter" component={CounterApp} />
+                  <Route path="/mobx-counter" component={MobXCounterApp} />
                   <Route path="/clock" component={ClockApp} />
                   <Route path="/timer" component={TimerApp} />
                   <Route path="/toastr" component={ToastrApp} />

@@ -11,6 +11,7 @@ class Navbar extends Component {
           <li><Link to='/'>Home</Link></li>
           <li><Link to='/greetings'>Greetings</Link></li>
           <li><Link to='/counter'>Counter</Link></li>
+          <li><Link to='/mobx-counter'>MobXCounter</Link></li>
           <li><Link to='/clock'>Clock</Link></li>
           <li><Link to='/timer'>Cooking Timers</Link></li>
           <li><Link to='/toastr'>Toastr</Link></li>

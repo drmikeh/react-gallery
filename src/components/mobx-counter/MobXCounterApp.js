@@ -1,51 +1,42 @@
 import React from 'react';
-import { Panel, ButtonGroup, Button } from 'react-bootstrap';
 import { observable } from 'mobx';
 import { observer } from 'mobx-react';
 
-const appState = observable({
-  count: 0
-});
+import Counter from './Counter';
 
-appState.increment = function () {
-  this.count++;
-  console.log(this.count);
-};
-
-appState.decrement = function () {
-  this.count = Math.max(0, this.count - 1);
-  console.log(this.count);
-};
-
-const CounterApp = observer(class extends React.Component {
-  increment() {
-    this.props.store.increment();
+class ObservableCounter {
+  constructor() {
+    this._count = observable({ count: 0 });
+    this._count.inc = function() {
+      this.count++;
+    }
+    this._count.dec = function() {
+      this.count = Math.max(0, this.count - 1);
+    }
+    this.inc = this.inc.bind(this);
+    this.dec = this.dec.bind(this);
   }
-
-  decrement() {
-    this.props.store.decrement();
+  get count() {
+    return this._count.count;
   }
-
-  render() {
-    return (
-      <Panel header='MobX Counter' className='example'>
-        <p>The count is {this.props.store.count}</p>
-        <ButtonGroup>
-          <Button
-            bsStyle='danger'
-            onClick={this.decrement.bind(this)}
-            disabled={this.props.store.count === 0} >Decrement
-          </Button>
-          <Button
-            bsStyle='success'
-            onClick={this.increment.bind(this)}>Increment
-          </Button>
-        </ButtonGroup>
-      </Panel>
-    );
+  inc() {
+    this._count.inc();
   }
-});
+  dec() {
+    this._count.dec();
+  }
+}
 
+const CounterApp = observer(({ store }) => (
+  <div>
+    <Counter count={store.count1.count} inc={store.count1.inc} dec={store.count1.dec} />
+    <Counter count={store.count2.count} inc={store.count2.inc} dec={store.count2.dec} />
+    <hr/>
+    <h3>The sum of the counts is {store.count1.count + store.count2.count}</h3>
+  </div>
+));
+
+const appState = { count1: new ObservableCounter(), count2: new ObservableCounter() };
 const MobXCounterApp = () => <CounterApp store={appState} />;
 
 export default MobXCounterApp;

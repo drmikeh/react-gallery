@@ -4,17 +4,17 @@ class Interval {
     this.interval = interval;
   }
   start() {
-    this.timer = setInterval(this.cb, this.interval);
+    this.timer = setInterval(() => {
+      if (this.isRunning) {
+        this.cb()
+      }
+    }, this.interval);
   }
   stop() {
     if (this.timer) {
       clearInterval(this.timer);
       this.timer = null;
     }
-  }
-  restart() {
-    this.stop();
-    this.start();
   }
   isRunning() {
     return this.timer ? true : false;

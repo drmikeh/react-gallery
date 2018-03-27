@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import Interval from './interval';
-import Editable from 'react-x-editable';
 import TimerDoneSound from './TimerDoneSound';
 import { ButtonGroup, Button, Panel } from 'react-bootstrap';
+import { RIEInput } from 'riek';
 
 import './Timer.css';
 
@@ -23,60 +23,62 @@ class Timer extends Component {
   constructor(props) {
     super(props)
     this.state = {
+      name: props.name,
       isRunning: false,
       isPaused: false,
       isDone: false,
       timeRemaining: props.startTime * 10
     };
-    this.tick = this.tick.bind(this);
     this.interval = new Interval(this.tick, 100);
   }
 
-  reset() {
+  reset = () => {
     this.setState({
       isRunning: false,
       isPaused: false,
       isDone: false,
       timeRemaining: this.props.startTime * 10
     });
-    this.interval.restart();
+    this.interval.stop();
   }
 
-  add30() {
+  add30 = () => {
     this.setState({ timeRemaining: this.state.timeRemaining + 300 });
   }
 
-  sub30() {
+  sub30 = () => {
     this.setState({ timeRemaining: this.state.timeRemaining - 300 });
-  }
-
-  componentDidMount() {
-    this.interval.start();
   }
 
   componentWillUnmount() {
     this.interval.stop();
   }
 
-  tick() {
+  tick = () => {
+    console.log('tick');
     if (this.state.timeRemaining <= 0) {
+      this.interval.stop();
       this.setState({
         timeRemaining: 0,
         isDone: true
       });
-      clearInterval(this.intervalTimer);
     }
-    else if (this.state.isRunning) {
+    else {
       const newValue = this.state.timeRemaining - 1;
       this.setState({ timeRemaining: newValue });
     }
   }
 
-  toggle() {
+  toggle = () => {
+    this.interval.isRunning() ? this.interval.stop() : this.interval.start();
     this.setState({
-      isRunning: !this.state.isRunning,
-      isPaused: !!this.state.isRunning
+      isRunning: this.interval.isRunning(),
+      isPaused: !this.interval.isRunning()
     });
+  }
+
+  updateName = ({name}) => {
+    this.setState({ name });
   }
 
   render () {
@@ -95,18 +97,19 @@ class Timer extends Component {
 
     const header = (
       <h3>
-        <Editable
-          name="name"
-          dataType="text"
-          mode="popup"
-          title="Please enter name"
-          value={this.props.name}
+        <RIEInput
+          value={this.state.name}
+          change={this.updateName}
+          propName="name"
+          className={"editable"}
+          classLoading="loading"
+          classInvalid="invalid"
         />
         <Button
           bsStyle="danger"
           bsSize="xsmall"
           className="pull-right"
-          style={{color: 'white', marginTop: '-20px'}}
+          style={{color: 'white'}}
           onClick={() => this.props.onRemove(this.props.id)}>X</Button>
       </h3>
     );
@@ -117,21 +120,21 @@ class Timer extends Component {
           <Button
             disabled={this.state.isDone}
             bsStyle={toggleButtonStyle}
-            onClick={this.toggle.bind(this)}>{toggleLabel}
+            onClick={this.toggle}>{toggleLabel}
           </Button>
           <Button
             bsStyle='danger'
-            onClick={this.reset.bind(this)}>Reset
+            onClick={this.reset}>Reset
           </Button>
           <Button
             bsStyle='primary'
             disabled={this.state.isDone}
-            onClick={this.add30.bind(this)}>+30
+            onClick={this.add30}>+30
           </Button>
           <Button
             bsStyle='primary'
             disabled={this.state.isDone}
-            onClick={this.sub30.bind(this)}>-30
+            onClick={this.sub30}>-30
           </Button>
         </ButtonGroup>
         {timerDoneSound}

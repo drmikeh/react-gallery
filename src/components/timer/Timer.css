@@ -28,3 +28,12 @@ label {
 .final-seconds {
    color: red;
 }
+
+.editable {
+  color: blue;
+  height: 24px;
+}
+
+.editable:focus {
+  outline: none;
+}

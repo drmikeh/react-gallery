@@ -1,11 +1,13 @@
 import React from 'react';
 import axios from 'axios';
+import toastr from '../toastr/toastr';
 
 import TodoTitle from './TodoTitle';
 import TodoForm from './TodoForm';
 import TodoList from './TodoList';
 
 import { Panel } from 'react-bootstrap';
+import 'toastr/build/toastr.min.css';
 import './Todo.css';
 
 class TodoApp extends React.Component {
@@ -18,10 +20,12 @@ class TodoApp extends React.Component {
   }
 
   componentDidMount() {
-    // Make HTTP request with Axios
     axios.get(this.apiUrl)
     .then((res) => {
       this.setState({todos:res.data});
+    })
+    .catch(function (error) {
+      toastr.error(error);
     });
   }
 
@@ -30,6 +34,9 @@ class TodoApp extends React.Component {
     axios.post(this.apiUrl, todo)
     .then((res) => {
       this.setState({ todos: [...this.state.todos, res.data] });
+    })
+    .catch(function (error) {
+      toastr.error(error);
     });
   }
 
@@ -39,6 +46,9 @@ class TodoApp extends React.Component {
     axios.delete(this.apiUrl + '/' + id)
     .then((res) => {
       this.setState({todos: remaining});
+    })
+    .catch(function (error) {
+      toastr.error(error);
     });
   }
 
@@ -58,6 +68,9 @@ class TodoApp extends React.Component {
           updatedTodoFromServer,
          ...this.state.todos.slice(index + 1)
        ] });
+    })
+    .catch(function (error) {
+      toastr.error(error);
     });
   }
 
